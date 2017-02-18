@@ -1,4 +1,6 @@
 EX
+files
+
 cfg
 .terraform
 terraform.tfvars
