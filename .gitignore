@@ -1,0 +1,4 @@
+EX
+cfg
+*.bak
+.terraform
