@@ -41,11 +41,11 @@ FOO
 function create_tfvars {
 	echo "Checking terraform.tfvars file: "
 	if [ -f ./cfg/terraform.tfvars ];then
-		echo -e "\t./cfg/terraform.tfvars file will be overwritten"
+		echo -e "\t./terraform.tfvars file will be overwritten"
 	fi
 
 	echo -n -e "\tCreating - "
-	cat << FOO > ./cfg/terraform.tfvars
+	cat << FOO > ./terraform.tfvars
 aws_access_key = "$1"
 aws_secret_key = "$2"
 timestamp="$3"
