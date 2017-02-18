@@ -1,4 +1,6 @@
 EX
 cfg
-*.bak
 .terraform
+terraform.tfvars
+*.bak
+*.pem
