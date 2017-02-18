@@ -17,9 +17,9 @@ Because we want to use the remote tfstate configuration, we want a safe place to
 
 
 
-#Configuration of Project
+#Project Configuration 
 
-Before plan to build our infrestructure, we need to setup the project thru the **setup.sh** script. This script will create the cfg folder, where the credentials and the base tfvars file.
+Before plan to build our infrestructure, we need to setup the project thru the **setup.sh** script. This script will create the *cfg folder*, where the credentials and the base tfvars file.
 
 The script will ask:
 
