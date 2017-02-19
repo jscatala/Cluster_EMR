@@ -1,10 +1,10 @@
 resource "aws_instance" "ssh" {
-    ami                         = "${var.amzn_AMI}"
+    ami                         = "${lookup(var.amzn_AMI, var.region)}"
     availability_zone           =  "${element(split(",", var.av_zones), 1)}"
     instance_type               = "t2.micro"  # instance type has to be specified 
     key_name                    = "${var.pem}"
     vpc_security_group_ids      = ["${aws_security_group.ssh.id}"] 
-    subnet_id                   = "${aws_subnet.public_1b.id}"
+    subnet_id                   = "${element(random_shuffle.az.result,2)}" #TODO: randomize the process 
     associate_public_ip_address = true
 
     tags {
