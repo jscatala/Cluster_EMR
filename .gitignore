@@ -6,3 +6,4 @@ cfg
 terraform.tfvars
 *.bak
 *.pem
+*.tfstate*
