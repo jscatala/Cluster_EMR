@@ -18,7 +18,7 @@ resource "aws_security_group" "nat" {
         Name = "NATSG"
     }
 }
-*
+
 resource "aws_security_group_rule" "ingress-to-ssh-acc" {
   type              = "ingress"
   from_port         = 22
