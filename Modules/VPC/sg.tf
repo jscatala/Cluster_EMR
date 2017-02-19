@@ -18,7 +18,7 @@ resource "aws_security_group" "nat" {
         Name = "NATSG"
     }
 }
-
+*
 resource "aws_security_group_rule" "ingress-to-ssh-acc" {
   type              = "ingress"
   from_port         = 22
@@ -37,39 +37,21 @@ resource "aws_security_group_rule" "egress-ssh-acc" {
     security_group_id = "${aws_security_group.ssh.id}"
 }
 
-resource "aws_security_group_rule" "ingress-http-to-nat-from-private1b" {
+resource "aws_security_group_rule" "ingress-http-to-nat" {
   type              = "ingress"
-  from_port         = 80
+  from_port         = 80 
   to_port           = 80
   protocol          = "tcp"
-  cidr_blocks       = ["${aws_subnet.private_1b.cidr_block}"]
+  cidr_blocks       = ["${aws_subnet.private_subnet.*.cidr_block}"]
   security_group_id = "${aws_security_group.nat.id}"
 }
 
-resource "aws_security_group_rule" "ingress-https-to-nat-from-private1b" {
+resource "aws_security_group_rule" "ingress-https-to-nat" {
   type              = "ingress"
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks       = ["${aws_subnet.private_1b.cidr_block}"]
-  security_group_id = "${aws_security_group.nat.id}"
-}
-
-resource "aws_security_group_rule" "ingress-http-to-nat-from-private1c" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = ["${aws_subnet.private_1c.cidr_block}"]
-  security_group_id = "${aws_security_group.nat.id}"
-}
-
-resource "aws_security_group_rule" "ingress-https-to-nat-from-private1c" {
-  type              = "ingress"
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  cidr_blocks       = ["${aws_subnet.private_1c.cidr_block}"]
+  cidr_blocks       = ["${aws_subnet.private_subnet.*.cidr_block}"]
   security_group_id = "${aws_security_group.nat.id}"
 }
 
