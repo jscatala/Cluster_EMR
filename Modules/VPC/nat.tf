@@ -5,6 +5,7 @@
 resource "random_shuffle" "az" {
     input        = ["${aws_subnet.public_subnet.*.id}"] 
     result_count = "1"
+    seed         = "${timestamp()}"
 }
 
 resource "aws_instance" "nat" {
@@ -15,7 +16,8 @@ resource "aws_instance" "nat" {
     associate_public_ip_address = true
     source_dest_check = false
     vpc_security_group_ids= ["${aws_security_group.nat.id}"]
-    subnet_id = "${element(random_shuffle.az.result,2)}" #TODO: randomize the process 
+    subnet_id = "${element(random_shuffle.az.result,1)}" 
+    #subnet_id = "subnet-63f3c707" 
 
     tags {
         Name = "VPC NAT"

@@ -1,5 +1,5 @@
 resource "aws_security_group" "ssh" {
-    name = "vpc_${var.proj_name}_ssh"
+    name = "sg_${var.proj_name}_ssh"
     description = "Allow traffic to ssh/bastion machine"
     vpc_id = "${aws_vpc.vpc.id}"
 
@@ -10,7 +10,7 @@ resource "aws_security_group" "ssh" {
 }
 
 resource "aws_security_group" "nat" {
-    name = "vpc_${var.proj_name}_nat"
+    name = "sg_${var.proj_name}_nat"
     description = "Allow traffic to pass from the private subnet to the internet"
     vpc_id = "${aws_vpc.vpc.id}"
 

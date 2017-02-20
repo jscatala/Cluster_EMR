@@ -14,3 +14,19 @@ variable "av_zones" {
 variable "cidr_block" {
     default = "10.0.0.0/16"
 }
+
+/*
+EMR variables
+*/
+
+variable "r_label" { 
+    default = "emr-5.3.1"
+}
+
+variable "emr_core_count" {
+    default = 1
+}
+
+variable "applications" {
+    default = "Spark"
+}
